@@ -5,25 +5,24 @@
         <p>{{ experience.description }}</p>
     </section>
 </template>
+
 <script>
-    import sourceData from '@/data.json'
-    import DestinationShow from './DestinationShow.vue';
-    export default {
-        props:{
-            id:{type: Number, required: true},
-            experienceSlug: {type: String, required: true,}
+    import sourceData from '../data.json'
+    import {computed} from 'vue';
+    export default{
+        props: {
+            id:{type:Number, required:true},
+            experienceSlug:{type:String, required:true}
         },
-        computed:{
-            destination(){
-                return sourceData.destinations.find(
-                    destination => destination.id === this.id
-                )
-            },
-            experience(){
-                return this.destination.experiences.find(
-                    experience=> experience.slug === this.experienceSlug
-                )
-            }
+        setup(props){
+            const description = computed(()=>{
+                return sourceData.destinations.find(destination => destination.id === props.id)
+            })
+            const experience = computed(()=>{
+                return description.value.experiences.find(experience => experience.slug === props.experienceSlug)
+            })
+            return { description,experience }
         }
+    
     }
 </script>

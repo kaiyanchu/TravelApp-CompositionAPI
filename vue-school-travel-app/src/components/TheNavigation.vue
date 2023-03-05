@@ -16,10 +16,9 @@
 <script>
     import sourceData from '@/data.json'
     export default {
-        data(){
-            return{
-                destinations: sourceData.destinations
-            }
+        setup(){
+            const destinations = sourceData.destinations
+            return{ destinations }
         }
     }
 </script>
