@@ -13,12 +13,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
     import sourceData from '@/data.json'
-    export default {
-        setup(){
-            const destinations = sourceData.destinations
-            return{ destinations }
-        }
-    }
+    const destinations = sourceData.destinations
 </script>

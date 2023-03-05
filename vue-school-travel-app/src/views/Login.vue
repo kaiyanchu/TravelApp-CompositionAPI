@@ -10,12 +10,10 @@
         </form>
     </div>
 </template>
-<script>
+<script setup>
     import {ref} from 'vue'
     import {useRouter, useRoute} from 'vue-router'
-    export default{
-        setup (){
-            const username = ref('')
+    const username = ref('')
             const password = ref('')
             const router = useRouter()
             const route = useRoute()
@@ -24,7 +22,4 @@
                 const redirectPath = route.query.redirect || '/protected'
                 router.push(redirectPath)
             }
-            return {username, password, login}
-        },
-    }
 </script>
